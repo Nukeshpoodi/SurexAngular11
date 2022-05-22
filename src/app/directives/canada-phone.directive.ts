@@ -15,21 +15,20 @@ export class CanadaPhoneDirective implements OnInit{
   }
 
   ngOnInit(): void {
-    setTimeout(()=> {
-      this.el.value = this.caPhNumFormatter(this.control.value);
-    })
+    this.control.valueChanges.subscribe(data => {
+      this.el.value = this.caPhNumFormatter(data);
+    });
   }
 
   @HostListener('input', ['$event.target.value'])
-  input(value: string){
-    value = value.replace(/[^0-9]/g, '');
-    value = (value.startsWith("1")) ? value.substring(1, value.length) : value;
+  input(value: string): void{
+    value = value.replace(/^1|[^0-9]/g, '');
     value = (value.length > 10) ? value.substring(0, 10) : value;
     this.control.setValue(value);
     this.el.value = this.caPhNumFormatter(value);
   }
 
-  caPhNumFormatter(numeric){
+  caPhNumFormatter(numeric: string): string{
     var format = numeric;
     if (numeric.length > 3)
       format = `(${numeric.substring(0,3)})${numeric.substring(3, 6)}`;
