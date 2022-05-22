@@ -22,8 +22,7 @@ export class CanadaPhoneDirective implements OnInit{
 
   @HostListener('input', ['$event.target.value'])
   input(value: string): void{
-    value = value.replace(/^1|[^0-9]/g, '');
-    value = (value.length > 10) ? value.substring(0, 10) : value;
+    value = value.replace(/^1|[^0-9]/g, '').substring(0, 10);
     this.control.setValue(value);
     this.el.value = this.caPhNumFormatter(value);
   }
