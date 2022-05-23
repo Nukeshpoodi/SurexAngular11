@@ -8,3 +8,10 @@
     width: 80%;
     margin: auto;
 }
+
+input {
+    width: 100%;
+    padding: 10px 5px;
+    margin: 1rem 0;
+    box-sizing: border-box;
+}

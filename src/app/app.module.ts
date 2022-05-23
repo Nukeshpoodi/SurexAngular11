@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CanadaPhoneDirective } from './directives/canada-phone.directive';
+import { SampleComponent } from './sample/sample.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CanadaPhoneDirective
+    CanadaPhoneDirective,
+    SampleComponent,
   ],
   imports: [
     BrowserModule,
